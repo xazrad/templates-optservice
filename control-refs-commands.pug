@@ -1,0 +1,107 @@
+extends base.pug
+
+block style	
+	<!-- JQuery DataTable Css -->
+	link(href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet")
+
+block menu_active
+	- var points = {control: true, refs: true, commands: true}
+
+block content
+	//- div.block-header
+		//- h2 Команды/Агенты
+			small Добавление/удаление/редактирование
+	<!-- Basic Examples -->					
+	div(class="row clearfix")
+		div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
+			div.card
+				div.header
+					h2 Команды
+					ul(class="header-dropdown m-r--5")
+						li.dropdown
+							a(href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+								i.material-icons more_vert
+							ul(class="dropdown-menu pull-right")
+								li
+									a(href="javascript:void(0);") Добавить
+								li
+									a(href="javascript:void(0);") Изменить
+								li
+									a(href="javascript:void(0);") Удалить
+
+				div.body
+					table(class="table table-bordered table-striped table-hover js-basic-example dataTable")
+						thead
+							tr
+								th Наименование
+								th Супервайзер
+								th Основная цена
+								th Ассортимент
+								th VAN
+						tbody.table-hover#tbody-commands
+							tr
+								td Основная
+								td Федор
+								td Розница
+								td Основной
+								td Нет
+	<!-- #END# Basic Examples -->
+	<!-- Example Tab -->
+	div(class="row clearfix")
+		div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
+			div.card
+				div.header
+					h2 Дополнительные настройки
+						small Выберите команду сверху
+				div.body
+					<!-- Nav tabs -->
+					ul(class="nav nav-tabs tab-nav-right" role="tablist")
+						li(role="presentation" class="active")
+							a(href="#home" data-toggle="tab") Склады
+
+						li(role="presentation")
+							a(href="#profile" data-toggle="tab") Прайс-листы
+
+						li(role="presentation")
+							a(href="#tasks" data-toggle="tab") Задачи
+
+					<!-- Tab panes -->
+					div.tab-content
+						div(role="tabpanel" class="tab-pane fade in active" id="home")
+							ul.dashboard-stat-list
+								li 
+									input(type="checkbox" id="md_checkbox_5" class="chk-col-indigo" checked)
+									label(for="md_checkbox_5") Основной склад
+						div(role="tabpanel" class="tab-pane fade" id="profile")
+							ul.dashboard-stat-list
+								li 
+									input(type="checkbox" id="md_checkbox_5" class="chk-col-indigo" checked)
+									label(for="md_checkbox_5") Розничный
+								li 
+									input(type="checkbox" id="md_checkbox_5" class="chk-col-indigo")
+									label(for="md_checkbox_5") Оптовый
+
+						div(role="tabpanel" class="tab-pane fade" id="tasks")
+							table(id="mainTable" class="table table-striped")
+								thead
+									tr
+										th Тип
+										th Название
+										th Обязательность
+										th Порядок
+								tbody
+									tr
+										td Gps-координата
+										td Gps-координата
+										td 200
+										td 0
+	<!-- #END# Example Tab -->
+
+block scripts
+	<!-- Jquery DataTable Plugin Js -->
+	script(src="plugins/jquery-datatable/jquery.dataTables.js")
+	script(src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
+	script(src="plugins/jquery-datatable.js")
+	script(src="js/ref-commands.js")
+	script(type="text/template" id="item-command")
+		<tr><td>iiii</td></tr>

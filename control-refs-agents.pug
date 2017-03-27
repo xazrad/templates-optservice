@@ -1,0 +1,48 @@
+extends base.pug
+
+block menu_active
+	- var points = {control: true, refs: true, agents: true}
+
+block content
+	//- div.block-header
+		//- h2 Команды/Агенты
+			small Добавление/удаление/редактирование
+	<!-- Basic Examples -->					
+	div(class="row clearfix")
+		div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
+			div.card
+				div.header
+					h2 Агенты
+					ul(class="header-dropdown m-r--5")
+						li.dropdown
+							a(href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+								i.material-icons more_vert
+							ul(class="dropdown-menu pull-right")
+								li
+									a(href="javascript:void(0);") Добавить
+								li
+									a(href="javascript:void(0);") Изменить
+								li
+									a(href="javascript:void(0);") Удалить
+
+				div.body
+					table(class="table table-bordered table-striped table-hover js-basic-example dataTable")
+						thead
+							tr
+								th Наименование
+								th Физ.лицо
+								th Телефон
+								th Команда
+								th Ассортимент
+								th GPS
+								th Галерея								
+						tbody.table-hover
+							tr
+								td Маршрут1
+								td Федор
+								td +79991570101
+								td Основная
+								td Основной
+								td Нет
+								td Нет
+	<!-- #END# Basic Examples -->

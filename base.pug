@@ -1,0 +1,270 @@
+DOCTYPE html
+html
+	head
+		meta(charset="UTF-8")
+		meta(content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name="viewport")
+		title Опт-Сервис
+		<!-- Favicon-->
+		//- link(rel="icon" href="favicon.ico" type="image/x-icon")
+		<!-- Google Fonts -->
+		link(href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css")
+		<!-- Bootstrap Core Css -->
+		link(href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet")
+		<!-- Waves Effect Css -->
+		link(href="plugins/node-waves/waves.css" rel="stylesheet")
+		<!-- Animation Css -->
+		link(href="plugins/animate-css/animate.css" rel="stylesheet")
+		block style	
+
+		<!-- Custom Css -->
+		link(href="css/style.css" rel="stylesheet")
+		link(href="css/themes/theme-indigo.css" rel="stylesheet")
+
+	body.theme-indigo
+	<!-- Page Loader -->
+	div.page-loader-wrapper
+		div.loader
+			div.preloader
+				div(class="spinner-layer pl-red")
+					div(class="circle-clipper left")
+						div.circle
+
+					div(class="circle-clipper right")
+						div.circle
+			p Please wait...
+	<!-- #END# Page Loader -->
+
+	<!-- Overlay For Sidebars -->
+	div.search-bar
+		div.search-icon
+			i.material-icons search
+		input(type="text" placeholder="START TYPING...")
+		div.close-search
+			i.material-icons close
+	<!-- #END# Search Bar -->
+	<!-- Top Bar -->
+	nav.navbar
+		div.container-fluid
+			div.navbar-header
+				a(href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false")
+				a(href="javascript:void(0);" class="bars")
+				a(class="navbar-brand" href="javascript:void(0);") ИП Хазиев Радик Навилович
+	
+			div(class="collapse navbar-collapse" id="navbar-collapse")
+				ul(class="nav navbar-nav navbar-right")
+					<!-- Notifications -->
+					li.dropdown
+						a(href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button")
+							i.material-icons cloud
+
+						ul.dropdown-menu
+							li.header Выгрузки 1с
+							li.body
+								ul.menu
+									li
+										a(href="javascript:void(0);")
+											div(class="icon-circle bg-light-green")
+												i.material-icons done_all
+											
+											div.menu-info
+												h4 Успешно
+												p
+													i.material-icons access_time
+													14 mins ago
+
+									li
+										a(href="javascript:void(0);")
+											div(class="icon-circle bg-red")
+												i.material-icons error
+											
+											div.menu-info
+												h4 Ошибка
+												p
+													i.material-icons access_time
+													3 hours ago
+							li.footer
+								a(href="javascript:void(0);") Просмотреть все
+					<!-- #END# Notifications -->
+					li.pull-right
+						a(href="javascript:void(0);" class="js-right-sidebar" data-close="true")
+							i.material-icons more_vert
+	<!-- #Top Bar -->
+	section
+		<!-- Left Sidebar -->
+		aside#leftsidebar.sidebar
+			block menu_active
+				- var points = {index: true}
+
+			<!-- Menu -->
+			div.menu
+				ul.list
+					li.header Навигация
+					li(class={active: points.index })
+						a(href="index.html")
+							i.material-icons home
+							span Главная
+					li(class={active: points.control })
+						a(href="javascript:void(0);" class="menu-toggle")
+							i.material-icons widgets
+							span Управление
+						ul.ml-menu
+							li(class={active: points.refs })
+								a(href="javascript:void(0);" class="menu-toggle")
+									span Справочники
+								ul.ml-menu
+									li(class={active: points.commands })
+										a(href="control-refs-commands.html") Команды
+									li(class={active: points.agents })
+										a(href="control-refs-agents.html") Агенты
+									li(class={active: points.licenses })
+										a(href="control-refs-licenses.html") Лицензии
+									li(class={active: points.assortments })
+										a(href="control-refs-assortments.html") Ассортимент
+									li(class={active: points.routes })
+										a(href="control-refs-routes.html") Маршрут
+									li(class={active: points.filters })
+										a(href="control-refs-filters.html") Фильтры
+									li(class={active: points.forms })
+										a(href="control-refs-forms.html") Анкеты
+									li(class={active: points.presentors })
+										a(href="control-refs-presentors.html") Презентор
+							li(class={active: points.planning })
+								a(href="javascript:void(0);" class="menu-toggle")
+									span Планирование
+								ul.ml-menu
+									li(class={active: points.sales })
+										a(href="control-planning-sales.html") План продаж
+					li(class={active: points.monitoring })
+						a(href="javascript:void(0);" class="menu-toggle")
+							i.material-icons work
+							span Мониторинг
+						ul.ml-menu
+							li(class={active: points.monitoring_gps })
+								a(href="javascript:void(0);" class="menu-toggle")
+									span GPS
+								ul.ml-menu
+									li(class={active: points.report_track })
+										a(href="monitoring-gps-track.html") Отчет с треками
+									li(class={active: points.report_gps })
+										a(href="monitoring-gps-gps.html") Отчет GPS
+							li(class={active: points.monitoring_reports })
+								a(href="javascript:void(0);" class="menu-toggle")
+									span Отчеты
+								ul.ml-menu
+									li(class={active: points.reports_docs })
+										a(href="monitoring-reports-reports_docs.html") Документы
+
+									li(class={active: points.reports_day })
+										a(href="monitoring-reports-reports_day.html") Дневной отчет
+									
+									li(class={active: points.reports_command })
+										a(href="monitoring-reports-reports_command.html") Командный отчет
+									
+									li(class={active: points.reports_day_route })
+										a(href="monitoring-reports-reports_day_route.html") Отчет по дневному маршруту
+									
+									li(class={active: points.reports_km })
+										a(href="monitoring-reports-reports_km.html") Отчет по км
+									
+									li(class={active: points.reports_sales_van })
+										a(href="monitoring-reports-reports_sales_van.html") Продажи VAN
+									
+									li(class={active: points.reports_sales_goods })
+										a(href="monitoring-reports-reports_sales_goods.html") Продажи по товарам
+									
+									li(class={active: points.reports_balance_shelf })
+										a(href="monitoring-reports-reports_balance_shelf.html") Остаток на полках
+									
+									li(class={active: points.reports_sales_plan })
+										a(href="monitoring-reports-reports_sales_plan.html") План продаж
+
+					li(class={active: points.merch })
+						a(href="javascript:void(0);" class="menu-toggle")
+							i.material-icons toys
+							span Мерчендайзинг
+						ul.ml-menu
+							li(class={active: points.merch_report_person })
+								a(href="merch-report_person.html") Индивидуальный отчет
+							
+							li(class={active: points.merch_report_total })
+								a(href="merch-report_total.html") Сводный отчет
+							
+							li(class={active: points.merch_report_forms })
+								a(href="merch-report_forms.html") Анкеты
+
+					li(class={active: points.settings })
+						a(href="javascript:void(0);" class="menu-toggle")
+							i.material-icons settings
+							span Настройки
+						ul.ml-menu
+							li(class={active: points.settings_global })
+								a(href="settings-global.html") Глобальные настройки
+							
+							li(class={active: points.settings_users })
+								a(href="settings-users.html") Пользователи
+							
+							li(class={active: points.settings_password })
+								a(href="settings-password.html") Изменить пароль
+			<!-- #Menu -->
+			<!-- Footer -->
+			div.legal
+				div.copyright &copy; 2017 ООО "Мобэксперт"
+				div.version Version: 1.0
+			<!-- #Footer -->
+		<!-- #END# Left Sidebar -->
+
+		<!-- Right Sidebar -->
+		aside#rightsidebar.right-sidebar
+			ul(class="nav nav-tabs tab-nav-right" role="tablist")
+				li(role="presentation" class="active")
+					a(href="#skins" data-toggle="tab") SKINS
+				li(role="presentation")
+					a(href="#settings" data-toggle="tab") SETTINGS
+			div.tab-content
+				div(role="tabpanel" class="tab-pane fade in active in active" id="skins")
+					ul.demo-choose-skin
+						li(data-theme="red" class="active")
+							div.red
+							span Red
+				
+				div(role="tabpanel" class="tab-pane fade" id="settings")
+					div.demo-settings
+						p GENERAL SETTINGS
+						ul.setting-list
+							li
+								span Report Panel Usage
+								div.switch
+									label
+										input(type="checkbox" checked)
+		<!-- #END# Right Sidebar -->
+
+	section.content
+		div.container-fluid
+			block content
+				h2 blank
+
+	<!-- Jquery Core Js -->
+	script(src="plugins/jquery/jquery.min.js")
+
+	<!-- Bootstrap Core Js -->
+	script(src="plugins/bootstrap/js/bootstrap.js")
+
+	<!-- Select Plugin Js -->
+	script(src="plugins/bootstrap-select/js/bootstrap-select.js")
+
+	<!-- Slimscroll Plugin Js -->
+	script(src="plugins/jquery-slimscroll/jquery.slimscroll.js")
+
+	<!-- Waves Effect Plugin Js -->
+	script(src="plugins/node-waves/waves.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js" type="text/javascript")
+
+	block scripts
+	
+	<!-- Custom Js -->
+	script(src="js/admin.js")
+	
+	<!-- Demo Js -->
+	script(src="js/demo.js")
