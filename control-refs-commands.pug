@@ -33,18 +33,19 @@ block content
 					table(class="table table-bordered table-striped table-hover js-basic-example dataTable")
 						thead
 							tr
+								th id
 								th Наименование
 								th Супервайзер
 								th Основная цена
 								th Ассортимент
 								th VAN
 						tbody.table-hover#tbody-commands
-							tr
-								td Основная
-								td Федор
-								td Розница
-								td Основной
-								td Нет
+							//- tr
+							//- 	td Основная
+							//- 	td Федор
+							//- 	td Розница
+							//- 	td Основной
+							//- 	td Нет
 	<!-- #END# Basic Examples -->
 	<!-- Example Tab -->
 	div(class="row clearfix")
@@ -103,5 +104,9 @@ block scripts
 	script(src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
 	script(src="plugins/jquery-datatable.js")
 	script(src="js/ref-commands.js")
-	script(type="text/template" id="item-command")
-		<tr><td>iiii</td></tr>
+	script(type="text/template" id="tpl_itemcommand")
+		<td><%- name %></td>
+		<td>Федор</td>
+		<td>Розница</td>
+		<td>Основной</td>
+		<td>Нет</td>

@@ -1,10 +1,19 @@
 $(function () {
-    var table = $('.js-basic-example').DataTable({
+    table = $('.js-basic-example').DataTable({
         responsive: true,
         paging:   false,
         ordering: false,
         info:     false,
-        searching: false        
+        searching: false,
+        language: {
+             "sEmptyTable": "Данные отсутствуют"
+        },
+         columnDefs: [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+            }
+        ]        
     });
 
     $('.js-basic-example tbody').on( 'click', 'tr', function () {
