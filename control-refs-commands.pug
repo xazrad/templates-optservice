@@ -111,17 +111,14 @@ block content
 					form
 						div(class="form-group form-float")
 							div.form-line
-								input(type="text" class="form-control" value="Жопа")
+								input(type="text" class="form-control" name="name" value="")
 								label.form-label Наименование
 
 						div(class="form-group form-float")
 							div.form-line
 								p
 									b Супервайзер
-								select(class="form-control show-tick")
-									option Mustard
-									option Ketchup
-									option Relish
+								select(class="form-control show-tick" name="persons")
 
 						div(class="form-group form-float")
 							div.form-line
@@ -161,41 +158,3 @@ block scripts
 	script(src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
 	script(src="plugins/jquery-datatable.js")
 	script(src="js/ref-commands.js")
-
-	script(type="text/template" id="tpl_modal_body")
-		form
-			div(class="form-group form-float")
-				div.form-line.focused
-					input(type="text" class="form-control" value!="<%= name %>")
-					label.form-label Наименование
-
-			div(class="form-group form-float")
-				div.form-line
-					p
-						b Супервайзер
-					select(class="form-control show-tick")
-						option Mustard
-						option Ketchup
-						option Relish
-
-			div(class="form-group form-float")
-				div.form-line
-					p
-						b Основная цена
-					select(class="form-control show-tick")
-						option Mustard
-						option Ketchup
-						option Relish
-
-			div(class="form-group form-float")
-				div.form-line
-					p
-						b Ассортимент
-					select(class="form-control show-tick")
-						option Mustard
-						option Ketchup
-						option Relish
-
-
-			input(type="checkbox" id="remember_me_2" class="filled-in")
-			label(for="remember_me_2") VAN
