@@ -3,6 +3,9 @@ extends base.pug
 block style	
 	<!-- JQuery DataTable Css -->
 	link(href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet")
+	<!-- Bootstrap Select Css -->
+	link(href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet")
+
 
 block menu_active
 	- var points = {control: true, refs: true, commands: true}
@@ -21,13 +24,13 @@ block content
 						li.dropdown
 							a(href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
 								i.material-icons more_vert
-							ul(class="dropdown-menu pull-right")
+							ul(class="dropdown-menu pull-right", id="control-commands")
 								li
-									a(href="javascript:void(0);") Добавить
+									a(href="javascript:void(0);" action="add") Добавить
 								li
-									a(href="javascript:void(0);") Изменить
+									a(href="javascript:void(0);" action="change") Изменить
 								li
-									a(href="javascript:void(0);") Удалить
+									a(href="javascript:void(0);" action="delete") Удалить
 
 				div.body
 					table(class="table table-bordered table-striped table-hover js-basic-example dataTable")
@@ -70,15 +73,15 @@ block content
 					div.tab-content
 						div(role="tabpanel" class="tab-pane fade in active" id="home")
 							ul.dashboard-stat-list
-								li 
+								li
 									input(type="checkbox" id="md_checkbox_5" class="chk-col-indigo" checked)
 									label(for="md_checkbox_5") Основной склад
 						div(role="tabpanel" class="tab-pane fade" id="profile")
 							ul.dashboard-stat-list
-								li 
+								li
 									input(type="checkbox" id="md_checkbox_5" class="chk-col-indigo" checked)
 									label(for="md_checkbox_5") Розничный
-								li 
+								li
 									input(type="checkbox" id="md_checkbox_5" class="chk-col-indigo")
 									label(for="md_checkbox_5") Оптовый
 
@@ -98,15 +101,101 @@ block content
 										td 0
 	<!-- #END# Example Tab -->
 
+	div(class="modal fade" id="defaultModal" tabindex="-1" role="dialog")
+		div(class="modal-dialog" role="document")
+			div.modal-content
+				div.modal-header
+					h4.modal-title#defaultModalLabel Команда
+
+				div.modal-body
+					form
+						div(class="form-group form-float")
+							div.form-line
+								input(type="text" class="form-control" value="Жопа")
+								label.form-label Наименование
+
+						div(class="form-group form-float")
+							div.form-line
+								p
+									b Супервайзер
+								select(class="form-control show-tick")
+									option Mustard
+									option Ketchup
+									option Relish
+
+						div(class="form-group form-float")
+							div.form-line
+								p
+									b Основная цена
+								select(class="form-control show-tick")
+									option Mustard
+									option Ketchup
+									option Relish
+
+						div(class="form-group form-float")
+							div.form-line
+								p
+									b Ассортимент
+								select(class="form-control show-tick")
+									option Mustard
+									option Ketchup
+									option Relish
+
+
+						input(type="checkbox" id="remember_me_2" class="filled-in")
+						label(for="remember_me_2") VAN
+
+				div.modal-footer
+					button(type="button" class="btn btn-link waves-effect") Сохранить
+					button(type="button" class="btn btn-link waves-effect" data-dismiss="modal") Закрыть
+
 block scripts
+	<!-- Bootstrap notifyotify Plugin Js -->
+	script(src="plugins/bootstrap-notify/bootstrap-notify.js")
+
+	<!-- Select Plugin Js -->
+	script(src="plugins/bootstrap-select/js/bootstrap-select.js")
+
 	<!-- Jquery DataTable Plugin Js -->
 	script(src="plugins/jquery-datatable/jquery.dataTables.js")
 	script(src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
 	script(src="plugins/jquery-datatable.js")
 	script(src="js/ref-commands.js")
-	script(type="text/template" id="tpl_itemcommand")
-		<td><%- name %></td>
-		<td>Федор</td>
-		<td>Розница</td>
-		<td>Основной</td>
-		<td>Нет</td>
+
+	script(type="text/template" id="tpl_modal_body")
+		form
+			div(class="form-group form-float")
+				div.form-line.focused
+					input(type="text" class="form-control" value!="<%= name %>")
+					label.form-label Наименование
+
+			div(class="form-group form-float")
+				div.form-line
+					p
+						b Супервайзер
+					select(class="form-control show-tick")
+						option Mustard
+						option Ketchup
+						option Relish
+
+			div(class="form-group form-float")
+				div.form-line
+					p
+						b Основная цена
+					select(class="form-control show-tick")
+						option Mustard
+						option Ketchup
+						option Relish
+
+			div(class="form-group form-float")
+				div.form-line
+					p
+						b Ассортимент
+					select(class="form-control show-tick")
+						option Mustard
+						option Ketchup
+						option Relish
+
+
+			input(type="checkbox" id="remember_me_2" class="filled-in")
+			label(for="remember_me_2") VAN

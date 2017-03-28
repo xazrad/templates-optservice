@@ -1,5 +1,5 @@
 $(function () {
-    table = $('.js-basic-example').DataTable({
+     table = $('.js-basic-example').DataTable({
         responsive: true,
         paging:   false,
         ordering: false,
@@ -8,25 +8,22 @@ $(function () {
         language: {
              "sEmptyTable": "Данные отсутствуют"
         },
-         columnDefs: [
-            {
-                "targets": [ 0 ],
-                "visible": false,
-            }
-        ]        
+         columns: [
+             { data: '_id' },
+             { data: 'name' },
+             { data: 'supervisor' },
+             { data: 'price' },
+             { data: 'assortiment' },
+             { data: 'van' },
+         ]
+        //  columnDefs: [
+        //     {
+        //         "targets": [ 0 ],
+        //         "visible": false,
+        //     }
+        // ]
     });
 
-    $('.js-basic-example tbody').on( 'click', 'tr', function () {
-            if ( $(this).hasClass('bg-cyan') ) {
-                console.log('remove');
-                $(this).removeClass('bg-cyan');
-            }
-            else {
-                console.log('add');
-                table.$('tr.bg-cyan').removeClass('bg-cyan');
-                $(this).addClass('bg-cyan');
-            }
-    });    
 
     //Exportable table
     $('.js-exportable').DataTable({
