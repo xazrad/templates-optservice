@@ -111,39 +111,29 @@ block content
 					form
 						div(class="form-group form-float")
 							div.form-line
-								input(type="text" class="form-control" value="Жопа")
+								input(type="text" class="form-control" name="name")
 								label.form-label Наименование
 
 						div(class="form-group form-float")
 							div.form-line
 								p
 									b Супервайзер
-								select(class="form-control show-tick")
-									option Mustard
-									option Ketchup
-									option Relish
+								select(class="form-control show-tick " name="persons")
 
 						div(class="form-group form-float")
 							div.form-line
 								p
 									b Основная цена
-								select(class="form-control show-tick")
-									option Mustard
-									option Ketchup
-									option Relish
+								select(class="form-control show-tick" name="priceLists")
 
 						div(class="form-group form-float")
 							div.form-line
 								p
 									b Ассортимент
-								select(class="form-control show-tick")
-									option Mustard
-									option Ketchup
-									option Relish
+								select(class="form-control show-tick" name="assortiment")
 
-
-						input(type="checkbox" id="remember_me_2" class="filled-in")
-						label(for="remember_me_2") VAN
+						input(type="checkbox" id="van" class="filled-in")
+						label(for="van") VAN
 
 				div.modal-footer
 					button(type="button" class="btn btn-link waves-effect") Сохранить
@@ -162,40 +152,63 @@ block scripts
 	script(src="plugins/jquery-datatable.js")
 	script(src="js/ref-commands.js")
 
-	script(type="text/template" id="tpl_modal_body")
-		form
-			div(class="form-group form-float")
-				div.form-line.focused
-					input(type="text" class="form-control" value!="<%= name %>")
-					label.form-label Наименование
+	script.
+		$(function () {
+			app.assortimentCollection = new app.AssortimentCollection([
+				{"_id": 1, "name": "Основной ассортимент"},
+				{"_id": 2, "name": "Акционный"}
+			]);
 
-			div(class="form-group form-float")
-				div.form-line
-					p
-						b Супервайзер
-					select(class="form-control show-tick")
-						option Mustard
-						option Ketchup
-						option Relish
+			app.priceListCollection = new app.PriceListCollection([
+				{"_id": 1, "name": "Основная"},
+				{"_id": 2, "name": "Розниная"}
+			]);
 
-			div(class="form-group form-float")
-				div.form-line
-					p
-						b Основная цена
-					select(class="form-control show-tick")
-						option Mustard
-						option Ketchup
-						option Relish
+			app.personCollection = new app.PersonCollection([
+				{"_id": 1, "name": "Физ лицо1"},
+				{"_id": 2, "name": "Физ лицо2"}
+			]);
 
-			div(class="form-group form-float")
-				div.form-line
-					p
-						b Ассортимент
-					select(class="form-control show-tick")
-						option Mustard
-						option Ketchup
-						option Relish
+			app.commandCollection = new app.CommandCollection([
+				{
+					"_id": 1,
+					"name": "Основная",
+					"supervisor_id": 1,
+					"pricelist_id": 1,
+					"assortiment_id": 1,
+					"van": true
+				},
+				{
+					"_id": 2,
+					"name": "Дополнительная",
+					"supervisor_id": 2,
+					"pricelist_id": 2,
+					"assortiment_id": 2,
+					"van": false
+				}
+			]);
 
+			app.router = new app.Router();
 
-			input(type="checkbox" id="remember_me_2" class="filled-in")
-			label(for="remember_me_2") VAN
+			app.commandCollectionView = new app.CommandCollectionView({
+				collection: app.commandCollection,
+				collectionPersons: app.personCollection,
+				collectionPriceLists: app.priceListCollection,
+				assortimentCollection: app.assortimentCollection,
+				router: app.router
+			});
+
+			app.commandModalView = new app.CommandModalView({
+				collectionPersons: app.personCollection,
+				collectionPriceLists: app.priceListCollection,
+				assortimentCollection: app.assortimentCollection
+			})
+
+			new app.CommandControlView({
+				collection: app.commandCollection,
+				modal: app.commandModalView
+			});
+
+			Backbone.history.start();
+
+		});

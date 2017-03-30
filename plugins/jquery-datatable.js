@@ -1,5 +1,6 @@
 $(function () {
      table = $('.js-basic-example').DataTable({
+         rowId: '_id',
         responsive: true,
         paging:   false,
         ordering: false,
@@ -12,7 +13,7 @@ $(function () {
              { data: '_id' },
              { data: 'name' },
              { data: 'supervisor' },
-             { data: 'price' },
+             { data: 'pricelist' },
              { data: 'assortiment' },
              { data: 'van' },
          ]
